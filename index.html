@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Elemental Readings</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Elemental Readings</h1>
+            <nav>
+                <ul><li><a href="https://www.elementalempressmedicine.com/" id="link">Back to Elemental Empress Medicine</a></li></ul>
+            </nav>
+        </header>
+        <main>
+            <div class="wrapper" id="wrapper">
+                <div id="deck" class="card" onclick="pickCards()"></div>
+                <div class="load-container" id="load">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot3"></div>
+                    <div id="load-text"></div>
+                </div>
+            </div>
+            <div class="display-cards" id="displayCards">
+                <div class="flex-container">
+                    <div id="card1" class="card"></div>
+                    <div id="card2" class="card"></div>
+                    <div id="card3" class="card"></div>
+                </div>
+                <button onclick="reset()" class="button">Pick Again</button>
+            </div>
+            <footer></footer>
+        </main>
+        <script>
+            function pickCards(){
+                document.getElementById('deck').style.display = "none";
+                document.getElementById('load').style.display = "block";
+                var loadText = document.getElementById('load-text');
+
+                setTimeout(function(){
+                    loadText.innerHTML = "Shuffling the cards..."
+                }, 500);
+
+                setTimeout(function(){
+                    loadText.innerHTML = "Keep your intention in mind"
+                }, 3000);
+
+                setTimeout(function(){
+                    loadText.innerHTML = "Almost there..."
+                }, 7000);
+
+                setTimeout(function(){
+                    displayCards()
+                }, 10000);
+
+            }
+
+            function displayCards(){
+                var cards = [];
+                for(var number=0;number<11;number++){
+                    cards.push(number);
+                }
+                
+                var card1Index = Math.floor(Math.random()*cards.length);
+                var card1 = "style/cards/"+ cards[card1Index] +".jpg";
+                cards.splice(card1Index, 1);
+
+                var card2Index = Math.floor(Math.random()*cards.length);
+                var card2 = "style/cards/"+ cards[card2Index] +".jpg";
+                cards.splice(card2Index, 1);
+
+                var card3Index = Math.floor(Math.random()*cards.length);
+                var card3 = "style/cards/"+ cards[card3Index] +".jpg";
+                cards.splice(card3Index, 1);
+
+                document.getElementById('wrapper').style.display = "none";
+                document.getElementById('displayCards').style.display = "block";
+                document.getElementById('card1').style.backgroundImage = "url(" + card1 + ")";
+                document.getElementById('card2').style.backgroundImage = "url(" + card2 + ")";
+                document.getElementById('card3').style.backgroundImage = "url(" + card3 + ")";
+                // might be worth tracking which cards are picked over long period of time.
+
+            }
+
+            function reset(){
+                document.getElementById('load').style.display = "none";
+                document.getElementById('deck').style.display = "block";
+                document.getElementById('wrapper').style.display = "block";
+                document.getElementById('displayCards').style.display = "none";
+            }
+        </script>
+    </body>
+</html>

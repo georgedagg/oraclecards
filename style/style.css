@@ -1,0 +1,230 @@
+body{
+    background: linear-gradient(rgba(208, 208, 208, 0.6), rgba(39, 127, 252, 0.3)), url(images/water.jpg);
+    background-size: cover;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+h1{
+    color: #2575aa;
+    font-size: 5rem;
+}
+
+header{
+    text-align: center;
+    margin: 10% auto;
+    width: 80%;
+}
+
+nav ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+#link{
+    color: #6ca4ca;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
+    font-size: 2rem;
+}
+
+#link::before{
+    content: "";
+    position: absolute;
+    left:0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d0c9d4;
+    background-image: linear-gradient(to right, #d0c9d4, #2575aa);
+    transition: width 0.5s ease-out;
+}
+
+#link:hover::before{
+    width:100%;
+}
+
+#link:hover{
+    cursor: pointer;
+}
+
+.wrapper{
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 50px auto;
+}
+
+.card{
+    height: 50rem;
+    width: 35rem;
+    background-size: cover;
+}
+
+.card:hover{
+    cursor: pointer;
+}
+
+#deck{
+    margin: 0 auto;
+    display: block;
+    background-image: url(images/deckCover.png);
+    background-size: contain;
+}
+
+.load-container{
+    width: 20rem;
+    margin: 50px auto;
+    display: none;
+    text-align: center;
+}
+
+#load-text{
+    color: #ffffff;
+    font-weight: bold;
+    padding: 2rem;
+    font-size: 1.5rem;
+    background-color: #2575aa;
+    border-radius: 15px;
+    margin-top: 5rem;
+}
+
+.dot{
+    height: 25px;
+    width: 25px;
+    background-color: #6ca4ca;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.dot1{
+    background-color: #a6bfa7;
+    animation: jump-up 0.6s 0.1s infinite;
+}
+
+.dot2{
+    background-color: #c4a7a9;
+    animation: jump-up 0.6s 0.2s infinite;
+}
+
+.dot3{
+    background-color: bisque;
+    animation: jump-up 0.6s 0.3s infinite;
+}
+
+@keyframes jump-up{
+    50%{
+        transform: translate(0, 15px);
+    }
+}
+
+.display-cards{
+    display: none;
+}
+
+.button{
+    background-color: #a6bfa7;
+    color: #ffffff;
+    font-weight: bold;
+    display: block;
+    margin: 50px auto;
+    padding: 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.5rem;
+}
+
+.button:hover{
+    background-color: #2575aa;
+}
+
+footer{
+    min-height: 10vh;
+}
+
+@media screen and (min-device-width: 480px){
+
+    h1{
+        font-size: 2.5rem;
+    }
+
+    #link{
+        font-size: 1.5rem;
+    }
+
+    .card{
+        height: 30rem;
+        width: 20rem;
+    }
+
+    #load-text{
+        font-size: 1.2rem;
+        padding: 1.5rem;
+        
+    }
+
+    .load-container{
+        width: 15rem;
+    }
+
+    .button{
+        font-size: 1.2rem;
+    }
+
+}
+
+
+@media screen and (min-device-width:770px){
+
+    .flex-container{
+        flex-direction: row;
+    }
+
+    header{
+        margin: 5% auto;
+    }
+
+}
+
+@media screen and (min-device-width:1024px){
+
+    .card{
+        height: 25rem;
+        width: 17.5rem;
+    }
+
+    h1{
+        font-size: 2.25rem;
+    }
+
+    #link{
+        font-size: 1rem;
+    }
+
+    .button{
+        font-size: 1rem;
+    }
+
+    #load-text{
+        font-size: 1rem;
+        padding: 1.25rem;
+    }
+
+    .dot{
+        height: 20px;
+        width: 20px;
+    }
+
+}
