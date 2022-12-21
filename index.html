@@ -25,15 +25,48 @@
             </div>
             <div class="display-cards" id="displayCards">
                 <div class="flex-container">
-                    <div id="card1" class="card"></div>
-                    <div id="card2" class="card"></div>
-                    <div id="card3" class="card"></div>
+                    <div id="card1" class="card" onclick="showDesc(this.id)"></div>
+                    <div id="card2" class="card" onclick="showDesc(this.id)"></div>
+                    <div id="card3" class="card" onclick="showDesc(this.id)"></div>
+                </div>
+                <div id="cardInfo">
+                    <div class="desc-container">
+                        <div class="card flex1" id="card-graphic"></div>
+                        <div class="card-desc flex2" id="card-description"></div>
+                    </div>
                 </div>
                 <button onclick="reset()" class="button">Pick Again</button>
             </div>
             <footer></footer>
         </main>
         <script>
+
+            var card1 = "";
+            var card2 = "";
+            var card3 = "";
+
+            function showDesc(clickedId){
+
+                document.getElementById('cardInfo').style.display = "block";
+
+                if(clickedId == 'card1'){
+                    document.getElementById('card-graphic').style.backgroundImage = "url(" + card1 + ")";
+                }else if(clickedId == 'card2'){
+                    document.getElementById('card-graphic').style.backgroundImage = "url(" + card2 + ")";
+                }else{
+                    document.getElementById('card-graphic').style.backgroundImage = "url(" + card3 + ")";
+                }
+
+                var cardHeading = "<h3>Sample Card Heading</h3>";
+                var cardDesc = "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque recusandae porro quis animi quos non aspernatur, neque voluptas fuga reprehenderit sequi harum dignissimos quia sapiente tempora similique commodi qui quasi.</p>";
+
+                document.getElementById('card-description').innerHTML = cardHeading + cardDesc;
+
+
+                // get the background image from the card
+                // display the associated description - JSON
+            }
+
             function pickCards(){
                 document.getElementById('deck').style.display = "none";
                 document.getElementById('load').style.display = "block";
@@ -64,15 +97,15 @@
                 }
                 
                 var card1Index = Math.floor(Math.random()*cards.length);
-                var card1 = "style/cards/"+ cards[card1Index] +".jpg";
+                card1 = "style/cards/"+ cards[card1Index] +".jpg";
                 cards.splice(card1Index, 1);
 
                 var card2Index = Math.floor(Math.random()*cards.length);
-                var card2 = "style/cards/"+ cards[card2Index] +".jpg";
+                card2 = "style/cards/"+ cards[card2Index] +".jpg";
                 cards.splice(card2Index, 1);
 
                 var card3Index = Math.floor(Math.random()*cards.length);
-                var card3 = "style/cards/"+ cards[card3Index] +".jpg";
+                card3 = "style/cards/"+ cards[card3Index] +".jpg";
                 cards.splice(card3Index, 1);
 
                 document.getElementById('wrapper').style.display = "none";
