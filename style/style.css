@@ -72,7 +72,6 @@ nav ul{
     height: 50rem;
     width: 35rem;
     background-size: cover;
-    background-color: pink;
 }
 
 .card:hover{
@@ -147,7 +146,7 @@ nav ul{
     background-color: #151b34;
     padding: 2rem;
     display: none;
-    margin: 5rem auto;
+    margin-top: 5rem;
 }
 
 .desc-container{
@@ -155,7 +154,7 @@ nav ul{
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    margin: 3rem auto;
+    margin-top: 3rem;
 
 }
 
@@ -168,6 +167,57 @@ nav ul{
     font-size: 1.75rem;
     width: 60%;
     margin: 0 auto;
+}
+
+.email{
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(images/forest.jpg);
+    background-position: center;
+    min-height: 40vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #d0c9d4;
+    padding-bottom: 2rem;
+    font-size: 1.75rem;
+}
+
+#emailInput{
+    border: none;
+    background-color: #151b34;
+    border-radius: 1rem;
+    height: 1.5rem;
+    width: 100%;
+    color: #d0c9d4;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.email-button{
+    background-color: #151b34;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 1rem;
+    width: 80%;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.email-button:hover{
+    background-color: #2575aa;
+    
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .button{
@@ -238,6 +288,15 @@ footer{
         font-size: 1.5rem;
     }
 
+    .email{
+        font-size: 1.5rem;
+        height: 30vh;
+    }
+
+    #emailInput{
+        font-size: 1.5rem;
+    }
+
 
     header{
         margin: 5% auto;
@@ -264,6 +323,10 @@ footer{
         font-size: 1rem;
     }
 
+    .email-button{
+        font-size: 1rem;
+    }
+
     #load-text{
         font-size: 1rem;
         padding: 1.25rem;
@@ -274,6 +337,10 @@ footer{
         width: 35px;
     }
 
+    #emailInput{
+        font-size: 1rem;
+    }
+
 }
 
 @media screen and (min-device-width:1440px){
@@ -282,6 +349,12 @@ footer{
         width: 70%;
         margin: 0 auto;
     }
+
+    .email{
+        font-size: 1.25rem;
+    }
+
+    
 }
 
 @media screen and (min-device-width:2560px){

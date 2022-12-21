@@ -35,6 +35,13 @@
                         <div class="card-desc flex2" id="card-description"></div>
                     </div>
                 </div>
+                <div id="emailReading" class="email">
+                    <h3>Email my reading to me:</h3>
+                    <div class="flex">
+                        <input type="email" id="emailInput">
+                        <input type="button" class="email-button" value="Send">
+                    </div>
+                </div>
                 <button onclick="reset()" class="button">Pick Again</button>
             </div>
             <footer></footer>
@@ -61,6 +68,7 @@
                 var cardDesc = "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque recusandae porro quis animi quos non aspernatur, neque voluptas fuga reprehenderit sequi harum dignissimos quia sapiente tempora similique commodi qui quasi.</p>";
 
                 document.getElementById('card-description').innerHTML = cardHeading + cardDesc;
+                document.getElementById('emailReading').style.display = "flex";
 
 
                 // get the background image from the card
