@@ -25,7 +25,11 @@
             </div>
             <div class="display-cards" id="displayCards">
                 <div class="flex-container">
-                    <div id="card1" class="card" onclick="showDesc(this.id)"></div>
+                    <div id="card1" class="card" onclick="showDesc(this.id)">
+                        <div id="overlay">
+                            <p id="overlayText">Click the card to learn more</p>
+                        </div>
+                    </div>
                     <div id="card2" class="card" onclick="showDesc(this.id)"></div>
                     <div id="card3" class="card" onclick="showDesc(this.id)"></div>
                 </div>
@@ -42,7 +46,7 @@
                         <input type="button" class="email-button" value="Send">
                     </div>
                 </div>
-                <button onclick="reset()" class="button">Pick Again</button>
+                <button onclick="reset()" class="button" id="reset">Pick Again</button>
             </div>
             <footer></footer>
         </main>
@@ -57,18 +61,23 @@
                 document.getElementById('cardInfo').style.display = "block";
 
                 if(clickedId == 'card1'){
+                    document.getElementById('card-graphic').style.animation = "fadeIn 3s";
                     document.getElementById('card-graphic').style.backgroundImage = "url(" + card1 + ")";
                 }else if(clickedId == 'card2'){
+                    document.getElementById('card-graphic').style.animation = "fadeIn 3s";
                     document.getElementById('card-graphic').style.backgroundImage = "url(" + card2 + ")";
                 }else{
+                    document.getElementById('card-graphic').style.animation = "fadeIn 3s";
                     document.getElementById('card-graphic').style.backgroundImage = "url(" + card3 + ")";
                 }
 
                 var cardHeading = "<h3>Sample Card Heading</h3>";
                 var cardDesc = "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque recusandae porro quis animi quos non aspernatur, neque voluptas fuga reprehenderit sequi harum dignissimos quia sapiente tempora similique commodi qui quasi.</p>";
 
+                document.getElementById('card-description').style.animation = "fadeIn 3s";
                 document.getElementById('card-description').innerHTML = cardHeading + cardDesc;
                 document.getElementById('emailReading').style.display = "flex";
+                document.getElementById('reset').style.display = "block"
 
 
                 // get the background image from the card
@@ -90,11 +99,11 @@
 
                 setTimeout(function(){
                     loadText.innerHTML = "Almost there..."
-                }, 7000);
+                }, 5000);
 
                 setTimeout(function(){
                     displayCards()
-                }, 10000);
+                }, 8000);
 
             }
 
@@ -121,6 +130,23 @@
                 document.getElementById('card1').style.backgroundImage = "url(" + card1 + ")";
                 document.getElementById('card2').style.backgroundImage = "url(" + card2 + ")";
                 document.getElementById('card3').style.backgroundImage = "url(" + card3 + ")";
+
+                setTimeout(function(){
+                    document.getElementById('overlay').style.animation = "fadeIn 3s";
+                    document.getElementById('overlay').style.display = "flex";
+                    document.getElementById('overlayText').style.display = "block";
+                }, 500);
+
+                setTimeout(function(){
+                    document.getElementById('overlay').style.animation = "fadeOut 3s";
+                }, 3500);
+                setTimeout(function(){
+                    document.getElementById('overlay').style.display = "none";
+                    document.getElementById('overlayText').style.display = "none";
+                }, 6000);
+
+                
+                
                 // might be worth tracking which cards are picked over long period of time.
 
             }
@@ -132,6 +158,7 @@
                 document.getElementById('displayCards').style.display = "none";
                 document.getElementById('cardInfo').style.display = "none";
                 document.getElementById('emailReading').style.display = "none";
+                document.getElementById('reset').style.display = "none";
             }
         </script>
     </body>
