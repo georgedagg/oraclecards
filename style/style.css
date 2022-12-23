@@ -74,13 +74,12 @@ nav ul{
     background-size: cover;
 }
 
-#overlay{
+.overlay{
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3));
     background-size: contain;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    display: none;
     height: 100%;
 }
 
@@ -94,7 +93,7 @@ nav ul{
     100%{opacity: 0;}
 }
 
-#overlayText{
+.overlayText{
     color: #d0c9d4;
     font-weight: bold;
     width: 50%;
@@ -187,8 +186,8 @@ nav ul{
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    margin-top: 3rem;
-
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 #card-graphic{
@@ -271,6 +270,17 @@ nav ul{
 
 footer{
     min-height: 10vh;
+}
+
+.emailResult{
+    display: none;
+    justify-content: center;
+    margin: 2rem auto;
+}
+
+.frameStyle{
+    height: 5rem;
+    border: none;
 }
 
 @media screen and (min-device-width: 480px){

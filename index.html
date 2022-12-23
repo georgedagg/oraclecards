@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Elemental Readings</title>
         <link rel="stylesheet" type="text/css" href="style/style.css">
+        <link rel="icon" type="image/x-icon" href="style/images/fire.png">
     </head>
     <body>
         <header>
@@ -26,12 +27,20 @@
             <div class="display-cards" id="displayCards">
                 <div class="flex-container">
                     <div id="card1" class="card" onclick="showDesc(this.id)">
-                        <div id="overlay">
-                            <p id="overlayText">Click the card to learn more</p>
+                        <div class="overlay">
+                            <p class="overlayText">Click the card to learn more</p>
                         </div>
                     </div>
-                    <div id="card2" class="card" onclick="showDesc(this.id)"></div>
-                    <div id="card3" class="card" onclick="showDesc(this.id)"></div>
+                    <div id="card2" class="card" onclick="showDesc(this.id)">
+                        <div class="overlay">
+                            <p class="overlayText">Click the card to learn more</p>
+                        </div>
+                    </div>
+                    <div id="card3" class="card" onclick="showDesc(this.id)">
+                        <div class="overlay">
+                            <p class="overlayText">Click the card to learn more</p>
+                        </div>
+                    </div>
                 </div>
                 <div id="cardInfo">
                     <div class="desc-container">
@@ -40,126 +49,19 @@
                     </div>
                 </div>
                 <div id="emailReading" class="email">
-                    <h3>Email my reading to me:</h3>
-                    <div class="flex">
-                        <input type="email" id="emailInput">
-                        <input type="button" class="email-button" value="Send">
-                    </div>
+                    <h3>Receive a daily Elemental Reading by email:</h3>
+                    <form action="script.php" target="frame" method="post" class="flex">
+                        <input type="email" id="emailInput" name="email">
+                        <input type="submit" class="email-button" value="Send" name="submit" onclick="emailResult()">
+                    </form>
+                </div>
+                <div class="emailResult" id="emailResult">
+                    <iframe name="frame" class="frameStyle" scrolling="no"></iframe>
                 </div>
                 <button onclick="reset()" class="button" id="reset">Pick Again</button>
             </div>
             <footer></footer>
         </main>
-        <script>
-
-            var card1 = "";
-            var card2 = "";
-            var card3 = "";
-
-            function showDesc(clickedId){
-
-                document.getElementById('cardInfo').style.display = "block";
-
-                if(clickedId == 'card1'){
-                    document.getElementById('card-graphic').style.animation = "fadeIn 3s";
-                    document.getElementById('card-graphic').style.backgroundImage = "url(" + card1 + ")";
-                }else if(clickedId == 'card2'){
-                    document.getElementById('card-graphic').style.animation = "fadeIn 3s";
-                    document.getElementById('card-graphic').style.backgroundImage = "url(" + card2 + ")";
-                }else{
-                    document.getElementById('card-graphic').style.animation = "fadeIn 3s";
-                    document.getElementById('card-graphic').style.backgroundImage = "url(" + card3 + ")";
-                }
-
-                var cardHeading = "<h3>Sample Card Heading</h3>";
-                var cardDesc = "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque recusandae porro quis animi quos non aspernatur, neque voluptas fuga reprehenderit sequi harum dignissimos quia sapiente tempora similique commodi qui quasi.</p>";
-
-                document.getElementById('card-description').style.animation = "fadeIn 3s";
-                document.getElementById('card-description').innerHTML = cardHeading + cardDesc;
-                document.getElementById('emailReading').style.display = "flex";
-                document.getElementById('reset').style.display = "block"
-
-
-                // get the background image from the card
-                // display the associated description - JSON
-            }
-
-            function pickCards(){
-                document.getElementById('deck').style.display = "none";
-                document.getElementById('load').style.display = "block";
-                var loadText = document.getElementById('load-text');
-
-                setTimeout(function(){
-                    loadText.innerHTML = "Shuffling the cards..."
-                }, 10);
-
-                setTimeout(function(){
-                    loadText.innerHTML = "Keep your intention in mind"
-                }, 2000);
-
-                setTimeout(function(){
-                    loadText.innerHTML = "Almost there..."
-                }, 5000);
-
-                setTimeout(function(){
-                    displayCards()
-                }, 8000);
-
-            }
-
-            function displayCards(){
-                var cards = [];
-                for(var number=0;number<11;number++){
-                    cards.push(number);
-                }
-                
-                var card1Index = Math.floor(Math.random()*cards.length);
-                card1 = "style/cards/"+ cards[card1Index] +".jpg";
-                cards.splice(card1Index, 1);
-
-                var card2Index = Math.floor(Math.random()*cards.length);
-                card2 = "style/cards/"+ cards[card2Index] +".jpg";
-                cards.splice(card2Index, 1);
-
-                var card3Index = Math.floor(Math.random()*cards.length);
-                card3 = "style/cards/"+ cards[card3Index] +".jpg";
-                cards.splice(card3Index, 1);
-
-                document.getElementById('wrapper').style.display = "none";
-                document.getElementById('displayCards').style.display = "block";
-                document.getElementById('card1').style.backgroundImage = "url(" + card1 + ")";
-                document.getElementById('card2').style.backgroundImage = "url(" + card2 + ")";
-                document.getElementById('card3').style.backgroundImage = "url(" + card3 + ")";
-
-                setTimeout(function(){
-                    document.getElementById('overlay').style.animation = "fadeIn 3s";
-                    document.getElementById('overlay').style.display = "flex";
-                    document.getElementById('overlayText').style.display = "block";
-                }, 500);
-
-                setTimeout(function(){
-                    document.getElementById('overlay').style.animation = "fadeOut 3s";
-                }, 3500);
-                setTimeout(function(){
-                    document.getElementById('overlay').style.display = "none";
-                    document.getElementById('overlayText').style.display = "none";
-                }, 6000);
-
-                
-                
-                // might be worth tracking which cards are picked over long period of time.
-
-            }
-
-            function reset(){
-                document.getElementById('load').style.display = "none";
-                document.getElementById('deck').style.display = "block";
-                document.getElementById('wrapper').style.display = "block";
-                document.getElementById('displayCards').style.display = "none";
-                document.getElementById('cardInfo').style.display = "none";
-                document.getElementById('emailReading').style.display = "none";
-                document.getElementById('reset').style.display = "none";
-            }
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>
