@@ -7,61 +7,80 @@
         <link rel="icon" type="image/x-icon" href="style/images/fire.png">
     </head>
     <body>
-        <header>
-            <h1>Elemental Readings</h1>
-            <nav>
-                <ul><li><a href="https://www.elementalempressmedicine.com/" id="link">Back to Elemental Empress Medicine</a></li></ul>
-            </nav>
-        </header>
-        <main>
-            <div class="wrapper" id="wrapper">
-                <div id="deck" class="card" onclick="pickCards()"></div>
-                <div class="load-container" id="load">
-                    <div class="dot dot1"></div>
-                    <div class="dot dot2"></div>
-                    <div class="dot dot3"></div>
-                    <div class="dot dot4"></div>
-                    <div id="load-text"></div>
-                </div>
-            </div>
-            <div class="display-cards" id="displayCards">
-                <div class="flex-container">
-                    <div id="card1" class="card" onclick="showDesc(this.id)">
-                        <div class="overlay">
-                            <p class="overlayText">Click the card to learn more</p>
-                        </div>
-                    </div>
-                    <div id="card2" class="card" onclick="showDesc(this.id)">
-                        <div class="overlay">
-                            <p class="overlayText">Click the card to learn more</p>
-                        </div>
-                    </div>
-                    <div id="card3" class="card" onclick="showDesc(this.id)">
-                        <div class="overlay">
-                            <p class="overlayText">Click the card to learn more</p>
-                        </div>
+        <div class="bannerImage">
+            <header>
+                <h1>Elemental Readings</h1>
+                <nav>
+                    <ul><li><a href="https://www.elementalempressmedicine.com/" id="link">Back to Elemental Empress Medicine</a></li></ul>
+                </nav>
+            </header>
+            <main>
+                <div class="wrapper" id="wrapper">
+                    <div id="deck" class="card" onclick="pickCards()"></div>
+                    <div class="load-container" id="load">
+                        <div class="dot dot1"></div>
+                        <div class="dot dot2"></div>
+                        <div class="dot dot3"></div>
+                        <div class="dot dot4"></div>
+                        <div id="load-text"></div>
                     </div>
                 </div>
-                <div id="cardInfo">
+                <div class="display-cards" id="displayCards">
+                    <div class="flex-container">
+                        <div id="card1" class="card" onclick="showDesc(this.id);">
+                            <div class="overlay">
+                                <p class="overlayText">Click the card to learn more</p>
+                            </div>
+                        </div>
+                        <div id="card2" class="card" onclick="showDesc(this.id)">
+                            <div class="overlay">
+                                <p class="overlayText">Click the card to learn more</p>
+                            </div>
+                        </div>
+                        <div id="card3" class="card" onclick="showDesc(this.id)">
+                            <div class="overlay">
+                                <p class="overlayText">Click the card to learn more</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+                <div id="cardInfo" style="position:relative;">
+                <div id="scrollPoint" style="position:absolute; top: -50px;"></div>
                     <div class="desc-container">
-                        <div class="card flex1" id="card-graphic"></div>
+                        <div class="card flex1" style="box-shadow: 10px 10px 30px #474443;" id="card-graphic"></div>
                         <div class="card-desc flex2" id="card-description"></div>
                     </div>
                 </div>
+
                 <div id="emailReading" class="email">
-                    <h3>Receive a daily Elemental Reading by email:</h3>
+                    <h3>Receive your reading by email:</h3>
                     <form action="script.php" target="frame" method="post" class="flex">
                         <input type="email" id="emailInput" name="email">
-                        <input type="submit" class="email-button" value="Send" name="submit" onclick="emailResult()">
+                        <input type="text" value="" name="card1" id="reading1" style="display: none;">
+                        <input type="text" value="" name="card2" id="reading2" style="display: none;">
+                        <input type="text" value="" name="card3" id="reading3" style="display: none;">
+                        <input type="submit" class="email-button" value="Send" name="submit" onclick="loadCards(); emailResult();">
                     </form>
+                    <script>
+                        function emailResult(){
+                            document.getElementById('emailResult').style.display = "flex";
+                        }
+
+                        function loadCards(){
+                            document.getElementById('reading1').setAttribute('value', 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+                            document.getElementById('reading2').setAttribute('value', 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+                            document.getElementById('reading3').setAttribute('value', 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+                        }
+                    </script>
                 </div>
-                <div class="emailResult" id="emailResult">
-                    <iframe name="frame" class="frameStyle" scrolling="no"></iframe>
+                <div class="resetContainer" id="resetContainer">
+                    <div class="emailResult" id="emailResult">
+                        <iframe name="frame" class="frameStyle" scrolling="no"></iframe>
+                    </div>
+                    <button onclick="reset()" class="button" id="reset">Pick Again</button>
                 </div>
-                <button onclick="reset()" class="button" id="reset">Pick Again</button>
-            </div>
-            <footer></footer>
-        </main>
+            </main>
         <script src="script.js"></script>
     </body>
 </html>

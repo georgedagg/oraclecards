@@ -1,19 +1,32 @@
 body{
-    background: linear-gradient(rgba(208, 208, 208, 0.6), rgba(39, 127, 252, 0.3)), url(images/water.jpg);
-    background-size: cover;
+    background-color: #f5f1db;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     min-height: 100vh;
     margin: 0;
 }
 
+.bannerImage{
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(39, 127, 252, 0.3)), url(images/nature.jpg);
+    background-size: cover;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    min-height: 100vh;
+}
+
+.resetContainer{
+    margin: 5rem auto;
+    display: none;
+}
+
 h1{
-    color: #2575aa;
+    color: #f5f1db;
     font-size: 5rem;
+    margin: 0 auto;
 }
 
 header{
     text-align: center;
-    margin: 10% auto;
+    margin: 0 auto;
     width: 80%;
 }
 
@@ -23,7 +36,7 @@ nav ul{
 }
 
 #link{
-    color: #6ca4ca;
+    color: #65742f;
     text-decoration: none;
     display: inline-block;
     padding-bottom: 5px;
@@ -38,8 +51,8 @@ nav ul{
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #d0c9d4;
-    background-image: linear-gradient(to right, #d0c9d4, #2575aa);
+    background-color: #f5f1db;
+    background-image: linear-gradient(to right, #f5f1db, #65742f);
     transition: width 0.5s ease-out;
 }
 
@@ -69,9 +82,10 @@ nav ul{
 }
 
 .card{
-    height: 50rem;
-    width: 35rem;
-    background-size: cover;
+    height: 44rem;
+    width: 32rem;
+    background-size: contain;
+    box-shadow: 10px 20px 30px #65742f;
 }
 
 .overlay{
@@ -96,12 +110,9 @@ nav ul{
 .overlayText{
     color: #d0c9d4;
     font-weight: bold;
+    font-size: 2rem;
     width: 50%;
     text-align: center;
-    display: none;
-}
-
-#reset{
     display: none;
 }
 
@@ -112,8 +123,9 @@ nav ul{
 #deck{
     margin: 0 auto;
     display: block;
-    background-image: url(images/deckCover.png);
-    background-size: contain;
+    background-image: url(cards/deck.png);
+    background-size: cover;
+    box-shadow: 20px 20px 50px #65742f;
 }
 
 .load-container{
@@ -128,7 +140,7 @@ nav ul{
     font-weight: bold;
     padding: 2rem;
     font-size: 1.5rem;
-    background-color: #2575aa;
+    background-color: #65742f;
     border-radius: 15px;
     margin-top: 5rem;
 }
@@ -175,10 +187,9 @@ nav ul{
 }
 
 #cardInfo{
-    background-color: #151b34;
+    background-color: #f5f1db;
     padding: 2rem;
     display: none;
-    margin-top: 5rem;
 }
 
 .desc-container{
@@ -195,32 +206,33 @@ nav ul{
 }
 
 .card-desc{
-    color: #d0c9d4;
+    color: #474443;
     font-size: 1.75rem;
     width: 60%;
     margin: 0 auto;
 }
 
 .email{
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(images/forest.jpg);
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(images/water.jpg);
     background-position: center;
+    background-size: cover;
     min-height: 40vh;
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #d0c9d4;
+    color: #ffffff;
     padding-bottom: 2rem;
     font-size: 1.75rem;
 }
 
 #emailInput{
     border: none;
-    background-color: #151b34;
+    background-color: #c2aa7f;
     border-radius: 1rem;
     height: 1.5rem;
     width: 100%;
-    color: #d0c9d4;
+    color: #474443;
     font-size: 1.5rem;
     padding: 0.5rem;
     font-weight: bold;
@@ -229,7 +241,7 @@ nav ul{
 }
 
 .email-button{
-    background-color: #151b34;
+    background-color: #65742f;
     color: #ffffff;
     font-weight: bold;
     padding: 1rem;
@@ -240,7 +252,7 @@ nav ul{
 }
 
 .email-button:hover{
-    background-color: #2575aa;
+    background-color: #c2aa7f;
     
 }
 
@@ -253,7 +265,7 @@ nav ul{
 }
 
 .button{
-    background-color: #151b34;
+    background-color: #65742f;
     color: #ffffff;
     font-weight: bold;
     display: block;
@@ -265,17 +277,17 @@ nav ul{
 }
 
 .button:hover{
-    background-color: #2575aa;
-}
-
-footer{
-    min-height: 10vh;
+    background-color: #c2aa7f;
 }
 
 .emailResult{
-    display: none;
     justify-content: center;
     margin: 2rem auto;
+    display: none;
+}
+
+#reset:hover{
+    cursor: pointer;
 }
 
 .frameStyle{
@@ -294,7 +306,7 @@ footer{
     }
 
     .card{
-        height: 30rem;
+        height: 27.5rem;
         width: 20rem;
     }
 
@@ -317,15 +329,20 @@ footer{
 
 @media screen and (min-device-width:768px){
 
-    .flex-container{
-        flex-direction: row;
-        margin: 2rem;
+
+    .bannerImage{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 
     .desc-container{
         flex-direction: row;
 
     }   
+
+    .overlayText{
+        font-size: 1rem;
+    }
 
     .card-desc{
         font-size: 1.5rem;
@@ -349,9 +366,14 @@ footer{
 
 @media screen and (min-device-width:1024px){
 
+    .flex-container{
+        flex-direction: row;
+        margin: 2rem;
+    }
+
     .card{
         height: 25rem;
-        width: 17.5rem;
+        width: 18.2rem;
     }
 
     h1{
@@ -395,6 +417,11 @@ footer{
 
     .email{
         font-size: 1.25rem;
+    }
+
+    .bannerImage{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 
     

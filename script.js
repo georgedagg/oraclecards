@@ -3,32 +3,59 @@ var card2 = "";
 var card3 = "";
 var pickCounter = 0;
 
-function emailResult(){
-    document.getElementById('emailResult').style.display = "flex";
+var xmlhttp = new XMLHttpRequest();
+var url = "cards.json";
+
+xmlhttp.onreadystatechange = function(){
+    if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+        parsedInfo = JSON.parse(xmlhttp.responseText);
+    }
+};
+
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function scroll(){
+    document.getElementById('scrollPoint').scrollIntoView({behavior:"smooth"});
+};
+
+function makeCardDesc(obj, card){
+
+    var cardObjects = obj.cards;
+
+    for(i=0;i<cardObjects.length;i++){
+        if(cardObjects[i].number == card){
+            var cardHeading = "<h3>" + cardObjects[i].title + "</h3>";
+            var cardDesc = "<p>" + cardObjects[i].desc + "</p>";
+        }
+    }
+
+    document.getElementById('card-description').innerHTML = cardHeading + cardDesc;
 }
 
 function showDesc(clickedId){
 
     document.getElementById('cardInfo').style.display = "block";
 
+    scroll();
+
     if(clickedId == 'card1'){
         document.getElementById('card-graphic').style.animation = "fadeIn 3s";
-        document.getElementById('card-graphic').style.backgroundImage = "url(" + card1 + ")";
+        document.getElementById('card-graphic').style.backgroundImage = "url(style/cards/" + card1 + ".png)";
+        makeCardDesc(parsedInfo, card1);
     }else if(clickedId == 'card2'){
         document.getElementById('card-graphic').style.animation = "fadeIn 3s";
-        document.getElementById('card-graphic').style.backgroundImage = "url(" + card2 + ")";
+        document.getElementById('card-graphic').style.backgroundImage = "url(style/cards/" + card2 + ".png)";
+        makeCardDesc(parsedInfo, card2);
     }else{
         document.getElementById('card-graphic').style.animation = "fadeIn 3s";
-        document.getElementById('card-graphic').style.backgroundImage = "url(" + card3 + ")";
+        document.getElementById('card-graphic').style.backgroundImage = "url(style/cards/" + card3 + ".png)";
+        makeCardDesc(parsedInfo, card3);
     }
 
-    var cardHeading = "<h3>Sample Card Heading</h3>";
-    var cardDesc = "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque recusandae porro quis animi quos non aspernatur, neque voluptas fuga reprehenderit sequi harum dignissimos quia sapiente tempora similique commodi qui quasi.</p>";
-
     document.getElementById('card-description').style.animation = "fadeIn 3s";
-    document.getElementById('card-description').innerHTML = cardHeading + cardDesc;
     document.getElementById('emailReading').style.display = "flex";
-    document.getElementById('reset').style.display = "block"
+    document.getElementById('resetContainer').style.display = "block";
 
 }
 
@@ -51,34 +78,34 @@ function pickCards(){
 
     setTimeout(function(){
         displayCards()
-    }, 1000);
+    }, 8000);
 
 }
 
 function displayCards(){
     var cards = [];
-    for(var number=0;number<11;number++){
+    for(var number=0;number<=47;number++){
         cards.push(number);
     }
     
     var card1Index = Math.floor(Math.random()*cards.length);
-    card1 = "style/cards/"+ cards[card1Index] +".jpg";
+    card1 = cards[card1Index];
     cards.splice(card1Index, 1);
 
     var card2Index = Math.floor(Math.random()*cards.length);
-    card2 = "style/cards/"+ cards[card2Index] +".jpg";
+    card2 = cards[card2Index];
     cards.splice(card2Index, 1);
 
     var card3Index = Math.floor(Math.random()*cards.length);
-    card3 = "style/cards/"+ cards[card3Index] +".jpg";
+    card3 = cards[card3Index];
     cards.splice(card3Index, 1);
 
     document.getElementById('wrapper').style.display = "none";
     document.getElementById('displayCards').style.display = "block";
-    document.getElementById('card1').style.backgroundImage = "url(" + card1 + ")";
-    document.getElementById('card2').style.backgroundImage = "url(" + card2 + ")";
-    document.getElementById('card3').style.backgroundImage = "url(" + card3 + ")";
-
+    document.getElementById('card1').style.backgroundImage = "url(style/cards/" + card1 + ".png)";
+    document.getElementById('card2').style.backgroundImage = "url(style/cards/" + card2 + ".png)";
+    document.getElementById('card3').style.backgroundImage = "url(style/cards/" + card3 + ".png)";
+    
     var overlay = document.getElementsByClassName("overlay");
     var overlayText = document.getElementsByClassName("overlayText");
     
@@ -114,8 +141,8 @@ function reset(){
     document.getElementById('displayCards').style.display = "none";
     document.getElementById('cardInfo').style.display = "none";
     document.getElementById('emailReading').style.display = "none";
-    document.getElementById('reset').style.display = "none";
     document.getElementById('emailResult').style.display = "none";
+    document.getElementById('resetContainer').style.display = "none";
 
     pickCounter += 1;
 }
