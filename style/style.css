@@ -209,6 +209,7 @@ nav ul{
     color: #474443;
     font-size: 1.75rem;
     width: 60%;
+    text-align: center;
     margin: 0 auto;
 }
 
@@ -345,11 +346,6 @@ nav ul{
         padding-bottom: 2rem;
     }
 
-    .desc-container{
-        flex-direction: row;
-
-    }   
-
     .overlayText{
         font-size: 1rem;
     }
@@ -381,9 +377,19 @@ nav ul{
         margin: 2rem;
     }
 
+    .desc-container{
+        flex-direction: row;
+        padding: 3rem;
+
+    }   
+
     .card{
         height: 25rem;
         width: 18.2rem;
+    }
+
+    .card-desc{
+        text-align: left;
     }
 
     h1{
