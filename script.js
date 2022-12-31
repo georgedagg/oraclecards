@@ -1,6 +1,9 @@
 var card1 = "";
 var card2 = "";
 var card3 = "";
+var card1Reading = "";
+var card2Reading = "";
+var card3Reading = "";
 var pickCounter = 0;
 
 var xmlhttp = new XMLHttpRequest();
@@ -19,18 +22,40 @@ function scroll(){
     document.getElementById('scrollPoint').scrollIntoView({behavior:"smooth"});
 };
 
-function makeCardDesc(obj, card){
+function emailResult(){
+    document.getElementById('emailResult').style.display = "flex";
+}
+
+function loadCardsEmail(){
+    document.getElementById('reading1Graphic').setAttribute('value', 'https://oraclecards.000webhostapp.com/style/cards/' + card1 +'.png');
+    document.getElementById('reading2Graphic').setAttribute('value', 'https://oraclecards.000webhostapp.com/style/cards/' + card2 +'.png');
+    document.getElementById('reading3Graphic').setAttribute('value', 'https://oraclecards.000webhostapp.com/style/cards/' + card3 +'.png');
+    document.getElementById('reading1Text').setAttribute('value', card1Reading);
+    document.getElementById('reading2Text').setAttribute('value', card2Reading);
+    document.getElementById('reading3Text').setAttribute('value', card3Reading);
+}
+
+function loadCardsDesc(obj){
 
     var cardObjects = obj.cards;
 
     for(i=0;i<cardObjects.length;i++){
-        if(cardObjects[i].number == card){
-            var cardHeading = "<h3>" + cardObjects[i].title + "</h3>";
-            var cardDesc = "<p>" + cardObjects[i].desc + "</p>";
+        if(cardObjects[i].number == card1){
+            var card1Heading = "<h3>" + cardObjects[i].title + "</h3>";
+            var card1Desc = "<p>" + cardObjects[i].desc + "</p>";
+            card1Reading = card1Heading + card1Desc;
+        }
+        if(cardObjects[i].number == card2){
+            var card2Heading = "<h3>" + cardObjects[i].title + "</h3>";
+            var card2Desc = "<p>" + cardObjects[i].desc + "</p>";
+            card2Reading = card2Heading + card2Desc;
+        }
+        if(cardObjects[i].number == card3){
+            var card3Heading = "<h3>" + cardObjects[i].title + "</h3>";
+            var card3Desc = "<p>" + cardObjects[i].desc + "</p>";
+            card3Reading = card3Heading + card3Desc;
         }
     }
-
-    document.getElementById('card-description').innerHTML = cardHeading + cardDesc;
 }
 
 function showDesc(clickedId){
@@ -42,15 +67,15 @@ function showDesc(clickedId){
     if(clickedId == 'card1'){
         document.getElementById('card-graphic').style.animation = "fadeIn 3s";
         document.getElementById('card-graphic').style.backgroundImage = "url(style/cards/" + card1 + ".png)";
-        makeCardDesc(parsedInfo, card1);
+        document.getElementById('card-description').innerHTML = card1Reading;
     }else if(clickedId == 'card2'){
         document.getElementById('card-graphic').style.animation = "fadeIn 3s";
         document.getElementById('card-graphic').style.backgroundImage = "url(style/cards/" + card2 + ".png)";
-        makeCardDesc(parsedInfo, card2);
+        document.getElementById('card-description').innerHTML = card2Reading;
     }else{
         document.getElementById('card-graphic').style.animation = "fadeIn 3s";
         document.getElementById('card-graphic').style.backgroundImage = "url(style/cards/" + card3 + ".png)";
-        makeCardDesc(parsedInfo, card3);
+        document.getElementById('card-description').innerHTML = card3Reading;
     }
 
     document.getElementById('card-description').style.animation = "fadeIn 3s";
@@ -78,6 +103,7 @@ function pickCards(){
 
     setTimeout(function(){
         displayCards()
+        loadCardsDesc(parsedInfo)
     }, 8000);
 
 }

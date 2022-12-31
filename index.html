@@ -57,22 +57,14 @@
                     <h3>Receive your reading by email:</h3>
                     <form action="script.php" target="frame" method="post" class="flex">
                         <input type="email" id="emailInput" name="email">
-                        <input type="text" value="" name="card1" id="reading1" style="display: none;">
-                        <input type="text" value="" name="card2" id="reading2" style="display: none;">
-                        <input type="text" value="" name="card3" id="reading3" style="display: none;">
-                        <input type="submit" class="email-button" value="Send" name="submit" onclick="loadCards(); emailResult();">
+                        <input type="text" value="" name="card1Graphic" id="reading1Graphic" style="display: none;">
+                        <input type="text" value="" name="card2Graphic" id="reading2Graphic" style="display: none;">
+                        <input type="text" value="" name="card3Graphic" id="reading3Graphic" style="display: none;">
+                        <input type="text" value="" name="card1Text" id="reading1Text" style="display: none;">
+                        <input type="text" value="" name="card2Text" id="reading2Text" style="display: none;">
+                        <input type="text" value="" name="card3Text" id="reading3Text" style="display: none;">
+                        <input type="submit" class="email-button" value="Send" name="submit" onclick="loadCardsEmail(); emailResult();">
                     </form>
-                    <script>
-                        function emailResult(){
-                            document.getElementById('emailResult').style.display = "flex";
-                        }
-
-                        function loadCards(){
-                            document.getElementById('reading1').setAttribute('value', 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
-                            document.getElementById('reading2').setAttribute('value', 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
-                            document.getElementById('reading3').setAttribute('value', 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
-                        }
-                    </script>
                 </div>
                 <div class="resetContainer" id="resetContainer">
                     <div class="emailResult" id="emailResult">

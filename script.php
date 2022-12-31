@@ -3,11 +3,13 @@
 if(isset($_POST['submit'])){
 
     $submitted_email = $_POST['email'];
-    $to_email = "dagg.george@gmail.com";
-    $card1 = $_POST['card1'];
-    $card2 = $_POST['card2'];
-    $card3 = $_POST['card3'];
-    $subject = "Your Reading!";
+    $card1Graphic = $_POST['card1Graphic'];
+    $card2Graphic = $_POST['card2Graphic'];
+    $card3Graphic = $_POST['card3Graphic'];
+    $card1Text = $_POST['card1Text'];
+    $card2Text = $_POST['card2Text'];
+    $card3Text = $_POST['card3Text'];
+    $subject = "Your Elemental Reading!";
     $body = "
 
             <!DOCTYPE html>
@@ -30,8 +32,8 @@ if(isset($_POST['submit'])){
                 }
 
                 .email-wrapper{
-                width: 75%;
-                margin: 5rem auto;
+                    width: 75%;
+                    margin: 5rem auto;
                 }
 
                 .flex-container-email{
@@ -39,28 +41,10 @@ if(isset($_POST['submit'])){
                 }
 
                 .card-image{
-                    margin: 0 auto;
-                    height: 25rem;
-                    width: 17rem;
-                }
-
-                #email-card1{
-                    background-image: url($card1);
-                    background-size: contain;
-                }
-
-                #email-card2{
-                    background-image: url($card2);
-                    background-size: contain;
-                }
-
-                #email-card3{
-                    background-image: url($card3);
-                    background-size: contain;
+                    text-align: center;
                 }
 
                 .card-description-container{
-                    width: 50%;
                     margin: 3rem auto;
                 }
 
@@ -77,39 +61,44 @@ if(isset($_POST['submit'])){
             <div class=\"email-wrapper\">
                 <div class=\"flex-container-email\">
                     <div class=\"card-image-container\">
-                        <div class=\"card-image\" id=\"email-card1\"></div>
+                        <div class=\"card-image\" id=\"email-card1\">
+                            <img src=$card1Graphic height=\"400px\" width=\"275px\">
+                        </div>
                     </div>
                     <div class=\"card-description-container\">
                         <div class=\"card-description\">
-                            <h2>Sample Heading</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem voluptates quod illo mollitia iusto odio porro et maiores, modi sapiente incidunt odit reprehenderit non harum enim deserunt ex dolore fugit!</p>
+                        $card1Text
                         </div>
                     </div>
                 </div>
                 <div class=\"flex-container-email\">
                     <div class=\"card-image-container\">
-                        <div class=\"card-image\" id=\"email-card2\"></div>
+                        <div class=\"card-image\" id=\"email-card2\">
+                            <img src=$card2Graphic height=\"400px\" width=\"275px\">
+                        </div>
                     </div>
                     <div class=\"card-description-container\">
                         <div class=\"card-description\">
-                            <h2>Sample Heading</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem voluptates quod illo mollitia iusto odio porro et maiores, modi sapiente incidunt odit reprehenderit non harum enim deserunt ex dolore fugit!</p>
+                        $card2Text
                         </div>
                     </div>
                 </div>
                 <div class=\"flex-container-email\">
                     <div class=\"card-image-container\">
-                        <div class=\"card-image\" id=\"email-card3\"></div>
+                        <div class=\"card-image\" id=\"email-card3\">
+                            <img src=$card3Graphic height=\"400px\" width=\"275px\">
+                        </div>
                     </div>
                     <div class=\"card-description-container\">
                         <div class=\"card-description\">
-                            <h2>Sample Heading</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem voluptates quod illo mollitia iusto odio porro et maiores, modi sapiente incidunt odit reprehenderit non harum enim deserunt ex dolore fugit!</p>
+                        $card3Text
                         </div>
                     </div>
                 </div>
             </div>
-            <footer></footer>
+            <footer>
+                <p style=\"text-align:center;\">Discover more at <a href=\"https://www.elementalempressmedicine.com/\">Elemental Empress Medicine</a>.</p>
+            </footer>
         </body>
         </html>
 
@@ -117,12 +106,16 @@ if(isset($_POST['submit'])){
     
     $headers = "MIME-Version: 1.0" . "\r\n"; 
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From:sofia@elementalempressmedicine.com";
+    $headers .= "From:heal@elementalempressmedicine.com";
+    $to_email = "dagg.george@gmail.com";
+    $subject2 = "Someone just got an Elemental Reading!";
+    $body2 = "$submitted_email just emailed themselves their reading.";
      
     if (mail($submitted_email, $subject, $body, $headers))
      
     {
-        echo "<h3 style='text-align: center; color: #151b34; font-family: \"Lucida Sans\", \"Lucida Sans Regular\", \"Lucida Grande\", \"Lucida Sans Unicode\", Geneva, Verdana, sans-serif; font-weight: bold;'>Success! You will now receive a daily Elemental Reading to your inbox.</h3>";
+        mail($to_email, $subject2, $body2, $headers);
+        echo "<h3 style='text-align: center; color: #151b34; font-family: \"Lucida Sans\", \"Lucida Sans Regular\", \"Lucida Grande\", \"Lucida Sans Unicode\", Geneva, Verdana, sans-serif; font-weight: bold;'>Success! Check your inbox for your reading.</h3>";
     }
      
     else
