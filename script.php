@@ -107,7 +107,7 @@ if(isset($_POST['submit'])){
     $headers = "MIME-Version: 1.0" . "\r\n"; 
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= "From:heal@elementalempressmedicine.com";
-    $to_email = "dagg.george@gmail.com";
+    $to_email = "heal@elementalempressmedicine.com";
     $subject2 = "Someone just got an Elemental Reading!";
     $body2 = "$submitted_email just emailed themselves their reading.";
      
