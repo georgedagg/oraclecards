@@ -22,6 +22,10 @@ if(isset($_POST['submit'])){
                     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                 }
 
+                h1{
+                    color: #65742f;
+                }
+
                 header{
                     margin: 5rem auto;
                     text-align: center;
