@@ -13,6 +13,13 @@ body{
     min-height: 100vh;
 }
 
+#intro{
+    width: 75%;
+    color:#f5f1db;
+    margin: 5rem auto;
+    font-size: 2rem;
+}
+
 .resetContainer{
     margin: 5rem auto;
     display: none;
@@ -70,7 +77,6 @@ nav ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px auto;
 }
 
 .flex-container{
@@ -228,7 +234,7 @@ nav ul{
     align-items: center;
     color: #f5f1db;
     padding-bottom: 2rem;
-    font-size: 1.75rem;
+    font-size: 2rem;
 }
 
 #emailInput{
@@ -358,6 +364,10 @@ nav ul{
         font-size: 1.5rem;
     }
 
+    #intro{
+        font-size: 1.5rem;
+    }
+
     .email{
         font-size: 1.5rem;
         height: 30vh;
@@ -365,6 +375,11 @@ nav ul{
 
     #emailInput{
         font-size: 1.5rem;
+    }
+
+    .dot{
+        height: 50px;
+        width: 50px;
     }
 
 
