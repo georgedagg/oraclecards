@@ -76,7 +76,6 @@ nav ul{
     min-height: 60vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .flex-container{
@@ -417,6 +416,11 @@ nav ul{
 
     #link{
         font-size: 1rem;
+    }
+
+    #intro{
+        font-size: 1.2rem;
+        width: 50%;
     }
 
     .button{
