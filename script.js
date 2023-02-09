@@ -20,16 +20,16 @@ xmlhttp.send();
 
 function scroll(){
     document.getElementById('scrollPoint').scrollIntoView({behavior:"smooth"});
-};
+}
 
 function emailResult(){
     document.getElementById('emailResult').style.display = "flex";
 }
 
 function loadCardsEmail(){
-    document.getElementById('reading1Graphic').setAttribute('value', 'https://oraclecards.000webhostapp.com/style/cards/' + card1 +'.png');
-    document.getElementById('reading2Graphic').setAttribute('value', 'https://oraclecards.000webhostapp.com/style/cards/' + card2 +'.png');
-    document.getElementById('reading3Graphic').setAttribute('value', 'https://oraclecards.000webhostapp.com/style/cards/' + card3 +'.png');
+    document.getElementById('reading1Graphic').setAttribute('value', 'https://www.elementalempressreadings.com/style/cards/' + card1 +'.png');
+    document.getElementById('reading2Graphic').setAttribute('value', 'https://www.elementalempressreadings.com/style/cards/' + card2 +'.png');
+    document.getElementById('reading3Graphic').setAttribute('value', 'https://www.elementalempressreadings.com/style/cards/' + card3 +'.png');
     document.getElementById('reading1Text').setAttribute('value', card1Reading);
     document.getElementById('reading2Text').setAttribute('value', card2Reading);
     document.getElementById('reading3Text').setAttribute('value', card3Reading);
